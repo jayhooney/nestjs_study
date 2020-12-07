@@ -23,7 +23,7 @@ export class AppService {
   }
 
   async createUser(userName: string): Promise<InsertResult> {
-    return await this.userRepo.create({ userNm: userName });
+    return await this.userRepo.insert({ userNm: userName });
   }
 
   async deleteUser(userId: number): Promise<DeleteResult> {
