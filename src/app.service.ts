@@ -10,7 +10,7 @@ export class AppService {
     private readonly userRepo: Repository<User>,
   ) {}
 
-  async aUser(userId: number): Promise<User> {
+  async getUser(userId: number): Promise<User> {
     return await this.userRepo.findOne({
       where: {
         userId: userId,
@@ -18,19 +18,19 @@ export class AppService {
     });
   }
 
-  async allUser(): Promise<User[]> {
+  async getUsers(): Promise<User[]> {
     return await this.userRepo.find();
   }
 
-  async addUser(userName: string): Promise<InsertResult> {
-    return await this.userRepo.insert();
+  async createUser(userName: string): Promise<InsertResult> {
+    return await this.userRepo.insert({ userNm: userName });
   }
 
-  async deleteUser(): Promise<DeleteResult> {
-    return await this.userRepo.delete();
+  async deleteUser(userId: number): Promise<DeleteResult> {
+    return await this.userRepo.delete({ userId: userId });
   }
 
-  async updateUser(userId: number): Promise<UpdateResult> {
-    return await this.userRepo.update();
+  async updateUser(user: User): Promise<User> {
+    return await this.userRepo.save(user);
   }
 }
