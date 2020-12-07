@@ -1,32 +1,41 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { AppService } from './app.service';
+import { User } from './entity/user.entity';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get(`aUser`)
-  aUser(): string {
-    return this.appService.aUser();
+  async aUser(@Param() params): Promise<User> {
+    return await this.appService.getUser(params.userId);
   }
 
   @Get('allUser')
-  allUser(): string {
-    return this.appService.allUser();
+  async allUser(): Promise<User[]> {
+    return await this.appService.getUsers();
   }
 
   @Post('addUser')
-  addUser(): string {
-    return this.appService.addUser();
+  async addUser(@Body() body): Promise<string> {
+    return await this.appService.createUser();
   }
 
   @Delete(`deleteUser`)
-  deleteUser(): string {
-    return this.appService.deleteUser();
+  async deleteUser(@Param() params): Promise<string> {
+    return await this.appService.deleteUser();
   }
 
   @Put(`updateUser`)
-  updateUser(): string {
-    return this.appService.updateUser();
+  async updateUser(@Body() body): Promise<string> {
+    return await this.appService.updateUser();
   }
 }
