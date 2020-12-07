@@ -1,36 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, InsertResult, Repository, UpdateResult } from 'typeorm';
-import { User } from './entity/user.entity';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepo: Repository<User>,
-  ) {}
-
-  async getUser(userId: number): Promise<User> {
-    return await this.userRepo.findOne({
-      where: {
-        userId: userId,
-      },
-    });
+  getUser(query: any): any {
+    return query;
   }
 
-  async getUsers(): Promise<User[]> {
-    return await this.userRepo.find();
+  getUsers(query: any): any {
+    return query;
   }
 
-  async createUser(userName: string): Promise<InsertResult> {
-    return await this.userRepo.insert({ userNm: userName });
+  createUser(body: any): any {
+    return body;
   }
 
-  async deleteUser(userId: number): Promise<DeleteResult> {
-    return await this.userRepo.delete({ userId: userId });
+  deleteUser(query: any): any {
+    return query;
   }
 
-  async updateUser(user: User): Promise<User> {
-    return await this.userRepo.save(user);
+  updateUser(body: any): any {
+    return body;
   }
 }

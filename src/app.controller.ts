@@ -3,39 +3,39 @@ import {
   Controller,
   Delete,
   Get,
-  Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
+import { query } from 'express';
 import { AppService } from './app.service';
-import { User } from './entity/user.entity';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get(`aUser`)
-  async aUser(@Param() params): Promise<User> {
-    return await this.appService.getUser(params.userId);
+  @Get(`getUser`)
+  aUser(@Query() query): any {
+    return this.appService.getUser(query);
   }
 
-  @Get('allUser')
-  async allUser(): Promise<User[]> {
-    return await this.appService.getUsers();
+  @Get('getUsers')
+  allUser(@Query() query): any {
+    return this.appService.getUsers(query);
   }
 
-  @Post('addUser')
-  async addUser(@Body() body): Promise<string> {
-    return await this.appService.createUser();
+  @Post('createUser')
+  addUser(@Body() body): any {
+    return this.appService.createUser(body);
   }
 
   @Delete(`deleteUser`)
-  async deleteUser(@Param() params): Promise<string> {
-    return await this.appService.deleteUser();
+  deleteUser(@Query() query): any {
+    return this.appService.deleteUser(query);
   }
 
   @Put(`updateUser`)
-  async updateUser(@Body() body): Promise<string> {
-    return await this.appService.updateUser();
+  updateUser(@Body() body): any {
+    return this.appService.updateUser(body);
   }
 }

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { query } from 'express';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -16,7 +17,7 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(appController.aUser()).toBe('this is aUser service!');
+      expect(appController.aUser(query)).toBe(query);
     });
   });
 });
