@@ -13,4 +13,8 @@ export class UserService {
   public userList(): User[] {
     return this.users;
   }
+
+  public aUser(userId: number): User {
+    return this.aUser[userId];
+  }
 }
