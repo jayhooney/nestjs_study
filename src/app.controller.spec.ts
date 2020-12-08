@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { query } from 'express';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -16,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.aUser(query)).toBe(query);
+    it('should return "HELLO NestJS !"', () => {
+      expect(appController.helloNestJS()).toBe(`HELLO NestJS !`);
     });
   });
 });
