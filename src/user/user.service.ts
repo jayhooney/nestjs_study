@@ -15,6 +15,6 @@ export class UserService {
   }
 
   public aUser(userId: number): User {
-    return this.aUser[userId];
+    return this.users[userId];
   }
 }
