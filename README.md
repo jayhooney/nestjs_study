@@ -18,3 +18,21 @@ NodeJS 개발자 채용에 NestJS와 TypeORM을 사용해본 사람을 우대하
 ```
 
 참고 : [당근마켓 기술블로그](https://medium.com/daangn/typescript%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B0%9C%EB%B0%9C-73877a741dbc)
+
+### 2. class-validator
+
+```
+진즉에 알았다면 좋았을것을..
+웹 크롤러 서비스의 백엔드를 개발할 때 오래동안 난처했던것 중에 하나가
+get,delete 등의 요청이 발생하면 query string에서 '숫자'로서 그 값을 가져오고 싶은데,
+캐스팅을 해주지 않으면 모든 값이 string이었다.
+이 부분에 대해서 Model를 선언해놓으면 자동으로 캐스팅을 챱-챱- 해주는 무언가가 없을까
+꽤 오래 서칭했지만, 마땅한것이 없어서 직접 구현했었는데..
+이번에 NestJS를 가지고 놀아보면서 class-validator를 알게됐다. 이걸 한 번 적용해봐야지.
+```
+
+### 4. TypeORM
+
+```
+음, 이건 왜 쓰는지 솔직히 잘 모르겠다..
+```
